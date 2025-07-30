@@ -100,6 +100,7 @@ export type SocialLinks = {
   bluesky?: string
   linkedin?: string
   email?: string
+  rss?: string
 }
 
 export type GiscusConfig = {
