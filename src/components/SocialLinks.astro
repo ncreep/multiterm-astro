@@ -9,7 +9,7 @@ interface Props {
 const { socialLinks } = Astro.props
 ---
 
-<div class="flex w-full max-w-md items-center justify-between">
+<div class="flex w-full max-w-md items-center justify-center gap-8">
   {
     socialLinks.github && (
       <a
@@ -88,6 +88,7 @@ const { socialLinks } = Astro.props
       </a>
     )
   }
+  {
     socialLinks.rss && (
       <a
         href={socialLinks.rss}
