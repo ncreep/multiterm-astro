@@ -12,6 +12,7 @@ const postsCollection = defineCollection({
       description: z.string().optional(),
       author: z.string().optional(),
       tags: z.array(z.string()).optional().default([]),
+      toc: z.boolean().optional(),
       coverImage: z
         .strictObject({
           src: image(),
