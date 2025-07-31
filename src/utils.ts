@@ -168,6 +168,10 @@ export async function resolveThemeColorStyles(
 
 export async function getSortedPosts() {
   const allPosts = await getCollection('posts', ({ data }) => {
+    // Exclude ignored posts
+    if (data.ignore) {
+      return false
+    }
     return import.meta.env.PROD ? data.draft !== true : true
   })
   const sortedPosts = allPosts.sort((a, b) => {
