@@ -68,20 +68,6 @@ if (addendum.length > 0) {
         )
       }
     </div>
-    {
-      postData.tags && (
-        <div class="text-accent mb-5 lg:mb-0">
-          {postData.tags.map((tag) => (
-            <a
-              class="underline mr-4 inline-block"
-              href={`/tags/${encodeURIComponent(tag)}`}
-            >
-              #{tag}
-            </a>
-          ))}
-        </div>
-      )
-    }
     <!-- <hr class="border-accent/10 border-2 rounded-xl hidden lg:block" /> -->
     <div class="flex flex-col xl:gap-8 2xl:gap-18 xl:flex-row xl:items-start">
       {headings.length > 0 && postData.toc && <TableOfContents headings={headings} />}
@@ -90,6 +76,24 @@ if (addendum.length > 0) {
       </div>
     </div>
   </article>
+
+  {
+    postData.tags && (
+      <div class="text-accent mb-5 lg:mb-0">
+        {postData.tags.map((tag) => (
+          <a
+            class="underline mr-4 inline-block"
+            href={`/tags/${encodeURIComponent(tag)}`}
+          >
+            #{tag}
+          </a>
+        ))}
+      </div>
+    )
+  }
+  
+  {postData.tags && <div class="mb-6"></div>}
+
   {
     AddendumContent && (
       <PostAddendum avatarImage={addendumAvatarImage}>

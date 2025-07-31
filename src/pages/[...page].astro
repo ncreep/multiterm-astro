@@ -1,0 +1,26 @@
+---
+import type { GetStaticPaths } from 'astro'
+import Layout from '@layouts/Layout.astro'
+import { getCollection, render } from 'astro:content'
+
+export const getStaticPaths = (async () => {
+  const pages = await getCollection('pages')
+  return pages.map((page) => ({
+    params: { page: page.id },
+    props: { page },
+  }))
+}) satisfies GetStaticPaths
+
+const { page } = Astro.props
+const { Content } = await render(page)
+const title = page.data.title || page.id.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+---
+
+<Layout title={title} description={page.data.description}>
+  <article class="max-w-full py-7.5 prose">
+    <h1 class="mb-3 text-2xl text-[var(--theme-h1)] font-semibold">
+      {title}
+    </h1>
+    <Content />
+  </article>
+</Layout>
