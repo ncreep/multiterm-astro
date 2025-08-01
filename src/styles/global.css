@@ -423,3 +423,6 @@ article img {
     @apply border-accent cursor-pointer;
   }
 }
+
+/* Import custom styles (overrides theme styles) */
+@import './custom.css';
