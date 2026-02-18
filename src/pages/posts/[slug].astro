@@ -31,7 +31,8 @@ export const getStaticPaths = (async () => {
 
 const { post, prev, next } = Astro.props
 const postData = post.data
-const { headings, Content: PostContent } = await render(post)
+const { headings, Content: PostContent, remarkPluginFrontmatter } = await render(post)
+const description = remarkPluginFrontmatter.description
 const addendum = await getCollection('addendum')
 let AddendumContent
 let addendumAvatarImage
@@ -68,7 +69,7 @@ if (postData.tags && postData.tags.length > 0) {
 
 <Layout
   title={postData.title}
-  description={postData.description}
+  description={description}
   author={postData.author}
   tags={postData.tags}
 >

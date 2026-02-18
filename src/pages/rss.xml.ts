@@ -23,6 +23,8 @@ export async function GET(_context: AstroGlobal) {
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.published,
+      // TODO this is not consistent with the `remarkDescription` plugin
+      // should we render the post here as well?
       description: post.data.description,
       author: post.data.author || siteConfig.author,
       link: `/posts/${post.id}`,

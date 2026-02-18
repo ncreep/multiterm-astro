@@ -14,7 +14,7 @@ interface Props {
 const { post } = Astro.props
 
 const { remarkPluginFrontmatter } = await render(post)
-const description = remarkPluginFrontmatter.description || post.data.description
+const description = remarkPluginFrontmatter.description
 let tags: Collation<'posts'>[] | undefined
 if (post.data.tags && post.data.tags.length > 0) {
   const tagsGroup = await TagsGroup.build()
